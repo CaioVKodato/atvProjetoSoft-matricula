@@ -12,6 +12,9 @@ public class Aluno extends User {
     }
 
     public List<Matricula> getHistoricoMatriculas() {
+        for (Matricula m : historicoMatriculas) {
+            System.out.println("Semestre: " + m.getSemestre().getIdentificador());
+        }
         return historicoMatriculas;
     }
 

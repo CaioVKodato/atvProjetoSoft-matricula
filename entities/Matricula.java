@@ -8,10 +8,15 @@ public class Matricula {
     private Semestre semestre;
     private List<Disciplina> disciplinas;
 
+    private Integer numObrigatorias;
+    private Integer numOptativas;
+
     public Matricula(Aluno aluno, Semestre semestre) {
         this.aluno = aluno;
         this.semestre = semestre;
         this.disciplinas = new ArrayList<>();
+        this.numObrigatorias = 0;
+        this.numOptativas = 0;
     }
 
     public Aluno getAluno() {
@@ -26,20 +31,50 @@ public class Matricula {
         return disciplinas;
     }
 
-    public void adicionarDisciplina(Disciplina disciplina) {
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+    public void setSemestre(Semestre semestre) {
+        this.semestre = semestre;
+    }
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
+    public Integer getNumObrigatorias() {
+        return this.numObrigatorias;
+    }
+
+    public void setNumObrigatorias(Integer numObrigatorias) {
+        this.numObrigatorias = numObrigatorias;
+    }
+
+    public Integer getNumOptativas() {
+        return this.numOptativas;
+    }
+
+    public void setNumOptativas(Integer numOptativas) {
+        this.numOptativas = numOptativas;
+    }
+
+
+    private void adicionarDisciplina(Disciplina disciplina) {
         disciplinas.add(disciplina);
+        if (disciplina.isObrigatoria()) {
+            numObrigatorias++;
+        }
+        else{
+            numOptativas++;
+        }
     }
 
     public void removerDisciplina(Disciplina disciplina) {
         disciplinas.remove(disciplina);
-    }
-
-    public int contarObrigatorias() {
-        return (int) disciplinas.stream().filter(Disciplina::isObrigatoria).count();
-    }
-
-    public int contarOptativas() {
-        return (int) disciplinas.stream().filter(d -> !d.isObrigatoria()).count();
+        if (disciplina.isObrigatoria()) {
+            numObrigatorias--;  
+        } else {
+            numOptativas--;  
+        }
     }
 
     public void matricularEmDisciplina(Disciplina disciplina) {
@@ -55,12 +90,12 @@ public class Matricula {
 
         disciplina.capacidadeMax();
 
-        if (disciplina.isObrigatoria() && contarObrigatorias() >= 4) {
+        if (disciplina.isObrigatoria() && numObrigatorias >= 4) {
             System.out.println("❌ Limite de disciplinas obrigatórias atingido.");
             return;
         }
 
-        if (!disciplina.isObrigatoria() && contarOptativas() >= 2) {
+        if (!disciplina.isObrigatoria() && numOptativas >= 2) {
             System.out.println("❌ Limite de disciplinas optativas atingido.");
             return;
         }

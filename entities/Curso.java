@@ -43,6 +43,11 @@ public class Curso {
         this.creditos = creditos;
     }
 
+    public void verificarTodasDisciplinas() {
+        for (Disciplina d : disciplinas) {
+            d.verficaAlunosMatriculados();
+        }
+    }
 
 
 

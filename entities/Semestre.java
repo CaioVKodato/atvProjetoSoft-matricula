@@ -21,9 +21,12 @@ public class Semestre {
         this.periodoMatriculaAberto = true;
     }
 
-    public void fecharPeriodoMatricula() {
+    public void fecharPeriodoMatricula(Curso curso) {
         this.periodoMatriculaAberto = false;
+        curso.verificarTodasDisciplinas();
     }
+
+
     @Override
     public String toString() {
         return identificador;

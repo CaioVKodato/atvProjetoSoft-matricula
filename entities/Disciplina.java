@@ -19,12 +19,11 @@ public class Disciplina {
     }
 
 
-    public Disciplina(Curso curso,String nome, boolean obrigatoria, boolean ativa, Professor professor, List<Aluno> alunos) {
+    public Disciplina(Curso curso,String nome, boolean obrigatoria, boolean ativa, Professor professor) {
         this.nome = nome;
         this.obrigatoria = obrigatoria;
         this.ativa = ativa;
         this.professor = professor;
-        this.alunos = alunos;
         this.curso = curso;
     }
 
@@ -67,6 +66,7 @@ public class Disciplina {
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
+        professor.addDisciplina(this);
     }
 
     public List<Aluno> getAlunos() {
@@ -93,7 +93,7 @@ public class Disciplina {
         this.curso = curso;
     }
 
-    public void verficiaAlunosMatriculados() {
+    public void verficaAlunosMatriculados() {
         if (alunos.size() <= MIN_ALUNOS) {
             this.ativa = false;
         }
@@ -103,9 +103,9 @@ public class Disciplina {
     public void capacidadeMax() {
         if  (alunos.size() >= MAX_ALUNOS) {
             this.ativa = false;
+            System.out.println("❌ A disciplina atingiu o número máximo de alunos.");
         }
-        System.out.println("❌ A disciplina atingiu o número máximo de alunos.");
-        
+       
     }
 
     

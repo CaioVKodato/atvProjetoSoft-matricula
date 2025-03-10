@@ -28,7 +28,7 @@ public class Professor extends User {
             System.out.println("Disciplina: " + disciplina.getNome());
             for (Aluno aluno : disciplina.getAlunos()) {
                 System.out.println("Alunos");
-                System.out.println(aluno.getNome());
+                System.out.println(aluno.getNome() + " - " + aluno.getEmail());
             }
             System.out.println();
         }

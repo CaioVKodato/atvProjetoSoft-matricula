@@ -3,17 +3,18 @@ package entities;
 public abstract class User {
     private String nome;
     private String senha;
-    private String login;
+    private String email;
 
 
     public User() {
     }
 
 
-    public User(String nome, String senha, String login) {
+    public User(String nome, String email, String senha) {
         this.nome = nome;
+        this.email = email;
         this.senha = senha;
-        this.login = login;
+        
     }
 
     public String getNome() {
@@ -32,14 +33,12 @@ public abstract class User {
         this.senha = senha;
     }
 
-    public String getLogin() {
-        return this.login;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
-
 
 }

@@ -79,46 +79,46 @@ public class Matricula {
 
     public void matricularEmDisciplina(Disciplina disciplina) {
         if (!semestre.isPeriodoMatriculaAberto()) {
-            System.out.println("❌ Matrícula não permitida. Período de matrícula está fechado.");
+            System.out.println("Matrícula não permitida. Período de matrícula está fechado.");
             return;
         }
 
         if (disciplinas.contains(disciplina)) {
-            System.out.println("⚠️ Já está matriculado nessa disciplina.");
+            System.out.println("Já está matriculado nessa disciplina.");
             return;
         }
 
         disciplina.capacidadeMax();
 
         if (disciplina.isObrigatoria() && numObrigatorias >= 4) {
-            System.out.println("❌ Limite de disciplinas obrigatórias atingido.");
+            System.out.println("Limite de disciplinas obrigatórias atingido.");
             return;
         }
 
         if (!disciplina.isObrigatoria() && numOptativas >= 2) {
-            System.out.println("❌ Limite de disciplinas optativas atingido.");
+            System.out.println("Limite de disciplinas optativas atingido.");
             return;
         }
 
         disciplina.addAluno(aluno);
         adicionarDisciplina(disciplina);
-        System.out.println("✅ Matriculado com sucesso em " + disciplina.getNome());
+        System.out.println("Matriculado com sucesso em " + disciplina.getNome());
     }
 
     public void cancelarMatricula(Disciplina disciplina) {
         if (!semestre.isPeriodoMatriculaAberto()) {
-            System.out.println("❌ Cancelamento não permitido. Período de matrícula está fechado.");
+            System.out.println("Cancelamento não permitido. Período de matrícula está fechado.");
             return;
         }
 
         if (!disciplinas.contains(disciplina)) {
-            System.out.println("⚠️ Não está matriculado nessa disciplina.");
+            System.out.println("Não está matriculado nessa disciplina.");
             return;
         }
 
         disciplina.removeAluno(aluno);
         removerDisciplina(disciplina);
-        System.out.println("✅ Matrícula cancelada da disciplina " + disciplina.getNome());
+        System.out.println("Matrícula cancelada da disciplina " + disciplina.getNome());
     }
 }
 

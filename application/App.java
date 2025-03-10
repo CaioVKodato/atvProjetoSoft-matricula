@@ -40,6 +40,9 @@ public class App {
 
        System.out.println(p1.getDisciplinas().size());
        p1.listarAlunosMatriculados();
+
+       m1.cancelarMatricula(c1.getDisciplinas().get(3));
+       System.out.println(m1.getDisciplinas());
        
        
 
